@@ -157,6 +157,7 @@ int main(int argc, const char *argv[])
 	printArray(array, number);
 	bubble(array, number, verbose);
 	printArray(array, number);
+	delete[] array;
 
 	// useless stuff to show you targets usage
 	//if(cmd.get<Target>("file"))
