@@ -11,7 +11,6 @@
 #include "Minus.hpp"
 #include "Plus.hpp"
 #include "Target.hpp"
-#include "ParseResult.hpp"
 #include "DependenceTree.hpp"
 
 namespace cmd

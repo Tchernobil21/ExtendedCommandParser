@@ -3,7 +3,7 @@
 #define VALIDABLE_H
 
 #include "Validator.hpp"
-#include "BasicParseResult.hpp"
+#include "BasicValidator.hpp"
 
 namespace cmd
 {
@@ -38,9 +38,8 @@ namespace cmd
 				if(!this->hasValidator())
 					return;
 
-				ParseResult * parseResult = this->getValidator()->getParseResult();
-				BasicParseResult<T> * castedResult = dynamic_cast<BasicParseResult<T> *>(parseResult);
-				value = castedResult->getValue();
+				BasicValidator<T> * validator = dynamic_cast<BasicValidator<T> *>(this->getValidator());
+				value = validator->getValue();
 			}
 
 			virtual ~Validable()

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdlib>
 
 #include "cmd/Cmd.hpp"
 
@@ -75,7 +74,7 @@ int main(int argc, const char *argv[])
 	cmd.addPossiblePlus("random", "r", "Generate the array with random integers.");
 	cmd.addPossiblePlus("reverse", "R", "Generate the array with values from n to 0.");
 
-	cmd.addPossibleMinus("number", "n", "The number of integers to generate.", new IntegerValidator("min=1;max=512"));
+	cmd.addPossibleMinus("number", "n", "The number of integers to generate.", new IntegerValidator("1:512"));
 	cmd.addPossibleMinus("random-min", "rmin", "Minimum value of the random generated numbers.", new IntegerValidator());
 	cmd.addPossibleMinus("random-max", "rmax", "Maximum value of the random generated numbers.", new IntegerValidator());
 
@@ -123,21 +122,21 @@ int main(int argc, const char *argv[])
 		random = true;
 	}
 
-	Minus * tmpMinus;
+	Validable * tmpValidable;
 
-	if((tmpMinus = cmd.get<Minus>("n")) != 0)
+	if((tmpValidable = cmd.get<Minus>("n")) != 0)
 	{
-		tmpMinus->smartCastIn<int>(number);
+		tmpValidable->smartCastIn<int>(number);
 	}
 
-	if((tmpMinus = cmd.get<Minus>("rmin")) != 0)
+	if((tmpValidable = cmd.get<Minus>("rmin")) != 0)
 	{
-		tmpMinus->smartCastIn<int>(rmin);
+		tmpValidable->smartCastIn<int>(rmin);
 	}
 
-	if((tmpMinus = cmd.get<Minus>("rmax")) != 0)
+	if((tmpValidable = cmd.get<Minus>("rmax")) != 0)
 	{
-		tmpMinus->smartCastIn<int>(rmax);
+		tmpValidable->smartCastIn<int>(rmax);
 	}
 
 	if(rmin > rmax)

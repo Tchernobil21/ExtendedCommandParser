@@ -48,10 +48,11 @@ A target argument is always at the end of the arguments list. It has a name that
 
 They handle the cast of the parameters and add constraints to it if you want.
 
-- IntegerValidator : cast a parameter to int and can have `min`, `max`, `in` and `nin` (not in) constraints.
-- FloatValidator : cast a parameter to float and can have `min`, `max`, `in` and `nin` (not in) constraints.
-- StringValidator : cast a parameter to string and can have a `in` constraint.
-- BoolValidator : cast a parameter to bool, the parameter must be `yes`, `no`, `y`, `n`, `true` or `false`.
+- IntegerValidator : cast a parameter to int and can have a value in ranges like `0:10,100:`.
+- FloatValidator : cast a parameter to float and can have a value in ranges like `0.0:10.0,100.0:`.
+- DoubleValidator : cast a parameter to double and can have a value in ranges like `0.0:10.0,100.0:`.
+- StringValidator : cast a parameter to string and can have a specific values like `str1,str2`.
+- BooleanValidator : cast a parameter to bool, the parameter must be `yes`, `no`, `y`, `n`, `true` or `false`.
 
 # Dependences
 
@@ -80,5 +81,8 @@ bubble --random --verbose --number 10
 
 # Go further
 
-You can also extend Validator to create your own, a good advice would be to look the code of Validator, BoolValidator (which is quite simple), and BasicParseResult. By extending Validator you can set your own constraints, and parse directly into a specific object.
+You can also extend Validator to create your own, a good advice would be to look the code of Validator, BooleanValidator (which is quite simple), and BasicValidator. By extending BasicValidator you can set your own constraints, and parse directly into a specific object.
 
+# TODO
+
+- C++ 11 version.
